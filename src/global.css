@@ -1,0 +1,292 @@
+* {
+  font-family: Arial, Helvetica, sans-serif; /* Substitua 'Roboto' pela fonte desejada */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: rgb(230, 20, 20);
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+html,
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  display: flex;
+  background-color: #f2f2f2;
+}
+
+.container {
+  background-image: url('https://img.freepik.com/vetores-premium/padrao-de-cozinha-esbocado_23-2147511810.jpg?semt=ais_hybrid');
+  display: flex;
+  width: 100%;
+  max-width: 100%; /* Garante que nada ultrapasse a tela */
+}
+
+
+/* //////////////////////////////////////////////////////////// */
+
+.home-container {
+  border-radius: 5px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: #ffffff; /* Cor de fundo suave */
+}
+
+
+h2 {
+  font-size: 24px;
+  color: #333;
+}
+
+p1{
+  font-size: 20px;
+}
+
+p2{
+  font-size: 20px;
+}
+
+p{
+  color: #000000;
+  font-size: 17px;
+  margin-top: 10px;
+}
+
+/* Box.css */
+.box {
+  justify-content: end;
+  background-color: white;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Largura do box */
+  text-align: center;
+}
+
+.box-container {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  gap: 10px;
+  margin-bottom: 80px;
+}
+
+.box-title {
+  background-color: #339226;
+  color: white;
+  border-radius: 8px 8px 0px 0px;
+  padding: 8px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box-content {
+  color: #333;
+  padding: 20px;
+  font-size: 14px;
+}
+
+/* Box.css */
+.boxInto-container {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  gap: 10px;
+}
+
+.boxInto-title {
+  background-color: #184712;
+  color: white;
+  border-radius: 8px 8px 0px 0px;
+  padding: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.boxInto-content {
+  padding: 20px;
+  font-size: 14px;
+  color: #000000;
+}
+
+/* PageTemplate.css */
+.page-template {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100vw;
+  height: 100vh; /* Garante que ocupa toda a altura da viewport */
+  background-color: #ffffff; /* Cor de fundo suave */
+  font-family: "Arial", sans-serif;
+  color: #333;
+  overflow-x: hidden; /* Impede a rolagem horizontal */
+}
+
+.page-header {
+  font-family: Grand Hotel !important; 
+  background-color: #339226;
+  color: white;
+  padding: 20px;
+  font-size: 35px;
+}
+
+.page-body {
+  flex: 1;
+  padding: 20px;
+  margin: 0px 300px ;
+}
+
+.page-title {
+  font-family: Grand Hotel !important; 
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.page-content {
+  background-color: rgb(248, 248, 248);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-right: 180px;
+  line-height: 1.6; /* Ajuste o valor conforme necessário */
+}
+
+.page-footer {
+  background-color: #339226;
+  color: white;
+  padding: 10px;
+  font-size: 14px;
+}
+
+/* ////////////////////////////////COLEPSE/////////////////////////////////////////// */
+
+.sidebar-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.sidebar-logo img {
+  width: 80px;
+  padding: 5px;
+}
+
+.content {
+  flex: 1; /* Faz com que o conteúdo principal ocupe o restante da tela */
+  max-width: calc(100% - 250px); /* Garante que não ultrapasse a tela */
+  background-color: #f2f2f2;
+}
+
+.sidebar {
+  cursor: default; /* Cursor padrão (seta) */
+  width: 180px;
+  height: 100vh;
+  background: #101f0d;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar a {
+  cursor: pointer; /* Cursor de mão para links */
+  color: white;
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  transition: all 0.3s ease; /* Adiciona transição suave */
+  border-radius: 4px;
+  margin-bottom: 5px;
+}
+
+.sidebar a:hover {
+  background: #575757;
+  transition: all 0.3s ease; /* Adiciona transição suave */
+}
+
+.sidebar a.active {
+  background-color: rgba(255, 255, 255, 0.2);
+  font-weight: bold;
+  transition: all 0.3s ease; /* Adiciona transição suave */
+  color: white;
+  font-weight: bold;
+}
+
+.sidebar-collapsible {
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.sidebar-collapsible > div {
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.sidebar-subitems {
+  margin-left: 8px; /* Indentação para os subitens */
+}
+
+.sidebar-subitems a {
+  padding: 8px 10px;
+  font-size: 0.9em;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
