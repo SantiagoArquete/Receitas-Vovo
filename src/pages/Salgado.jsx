@@ -2,18 +2,49 @@ import React from "react";
 import { Box, PageTemplate, BoxInto } from "../components/DefaultFunctions";
 import { InlineStep } from "../components/InlineStep";
 import { useEffect, useState } from "react";
+import api from "../service/api";
 
 function PaginaInicial() {
-  const [receitas, setReceitas] = useState([]);
-  console.log("RECEITAS", receitas); 
+  const [idUsuario, setIdUsuario] = useState([]);
+  const [dataNasc, setDataNas] = useState([]);
+  const [email, setEmail] = useState([]);
+  const [celular, setCelular] = useState([]);
+
+  const [idReceita, setIdReceita] = useState([]);
+  const [nome, setNome] = useState([]);
+  const [rendimento, setRendimento] = useState([]);
+  const [sujestao, setSujestao] = useState([]);
+
+  const [ingrediente, setIngrediente] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3001/usuarios")
-      .then((res) => res.json())
-      .then((data) => {
-        setReceitas(data);
-        console.log("DADOS", data); 
+    api
+      .get("/receitas")
+      .then((response) => {
+        setNome(response.data[0].nome);
+        setIdUsuario(response.data[0].id_usuario);
+        setDataNas(response.data[0].data_nasc.split("T")[0]);
+        setCelular(response.data[0].celular);
+        setEmail(response.data[0].email);
       })
+      .catch((err) => console.error(err));
+
+    api
+      .get("/receitas")
+      .then((response) => {
+        setIdReceita(response.data[0].id_receita);
+        setNome(response.data[0].nome);
+        setRendimento(response.data[0].rendimento);
+        setSujestao(response.data[0].sujestao);
+      })
+      .catch((err) => console.error(err));
+
+    api
+      .get(`/ingredientes/${idReceita}`)
+      .then((response) => {
+        setIngrediente(response.data[0].ingrediente);
+      })
+      .catch((err) => console.error(err));
   }, []);
 
   return (
@@ -22,27 +53,23 @@ function PaginaInicial() {
       header="Receitas da Vovó - Pagina Inicial"
       footer="© Copyright 2024-2025 Santiago Developer LTDA & BS - Brazilian Software"
     >
-      <Box title="Omelet Caseiro da Casa - Serve 1 pessoa">
-        {receitas}
-        <p2>
-          <strong>Ingredientes:</strong>
-        </p2>
-        <br />
-        <br />
-        <p>2 Ovos</p>
-        <p>1 colher de Manteiga</p>
-        <p>Punhado de Mussarela</p>
-        <p>Punhado de Bacon</p>
-        <p>Sal a gosto</p>
-        <p>Cebolinha a gosto</p>
-        <p>Páprica a gosto</p>
-        <br />
+      <Box title={`${nome} - Serve ${rendimento} pessoa`}>
+        <div className="headerBox">
+          <h2>
+            <strong>Ingredientes:</strong>
+          </h2>
+        </div>
+        <div className="ingredientesBox">
+          {ingrediente.map((item, index) => (
+            <p key={index}>{item.ingrediente}</p>
+          ))}
+        </div>
 
-        <p2>
-          <strong>Modo de Preparo:</strong>
-        </p2>
-        <br />
-        <br />
+        <div className="headerBox">
+          <h2>
+            <strong>Modo de Preparo:</strong>
+          </h2>
+        </div>
         <p>
           <InlineStep stepNumber={1} /> Frite o bacon em uma panela e reserve
           para usar depois
@@ -66,10 +93,7 @@ function PaginaInicial() {
         </p>
         <br />
         <BoxInto title="Sujestões da Receita">
-          <p>
-            Essa receita é otima para comer nas refeições de dia a dia, pois é
-            fácil e extremamente rápida de ser feita, espero que gostem.
-          </p>
+          <p>{sujestao}</p>
         </BoxInto>
       </Box>
 
