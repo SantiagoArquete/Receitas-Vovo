@@ -7,6 +7,7 @@ export default function BoxReceita({ receita }) {
       title={`${receita.nome_receita} - Serve ${receita.rendimento} pessoa${
         receita.rendimento > 1 ? "s" : ""
       }`}
+      className={"shadow"}
     >
       {/* INGREDIENTES */}
       <div>

@@ -1,18 +1,19 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
+import SidebarBoot from "./components/SidebarBoot";
 import PaginaInicial from "./pages/PaginaInicial";
 import Doce from "./pages/Doce";
 import Salgado from "./pages/Salgado";
 import Limitada from "./pages/Limitada";
 import Sobre from "./pages/Sobre";
-import '../src/global.css';
+import "../src/global.css";
 
-function App() {
+const App = () => {
   return (
-    <div className="container">
-      <Sidebar />
-      <div className="content">
+    <div className="layout">
+      <SidebarBoot />
+      <div className="page-content">
         <Routes>
           <Route path="/" element={<PaginaInicial />} />
           <Route path="/paginainicial" element={<PaginaInicial />} />
@@ -24,6 +25,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;

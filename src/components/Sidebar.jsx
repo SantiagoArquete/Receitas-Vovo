@@ -11,7 +11,7 @@ function Sidebar() {
   const activeClassName = ({ isActive }) => (isActive ? "active" : "");
 
   return (
-    <div className="sidebar">
+    <div className="sidebar z-9999">
       <div className="sidebar-logo">
         <img src="/favicon.ico" alt="Logo" />
       </div>
