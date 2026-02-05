@@ -1,48 +1,38 @@
 import React from "react";
 import { Box, PageTemplate, BoxInto } from "../components/DefaultFunctions";
 import { InlineStep } from "../components/InlineStep";
+import BoxReceita from "../components/BoxReceita";
 import { useEffect, useState } from "react";
 import api from "../service/api";
 
 function PaginaInicial() {
-  const [idUsuario, setIdUsuario] = useState([]);
-  const [dataNasc, setDataNas] = useState([]);
-  const [email, setEmail] = useState([]);
-  const [celular, setCelular] = useState([]);
+  const [receitas, setReceitas] = useState([]);
+  const [receitasMap, setReceitasMap] = useState([]);
 
-  const [idReceita, setIdReceita] = useState([]);
-  const [nome, setNome] = useState([]);
-  const [rendimento, setRendimento] = useState([]);
-  const [sujestao, setSujestao] = useState([]);
+  useEffect(() => {
+    if (receitas) {
+      const receitasTratadas = receitas.map((rec) => ({
+        ...rec,
+        ingredientes:
+          rec.ingredientes?.map((item) => ({
+            ingrediente: item.ingrediente || "",
+          })) || [],
+        modopreparo:
+          rec.modopreparo?.map((item) => ({
+            numeroPasso: item.numeroPasso,
+            passo: item.passo || "",
+          })) || [],
+      }));
 
-  const [ingrediente, setIngrediente] = useState([]);
+      setReceitasMap(receitasTratadas);
+    }
+  }, [receitas]);
 
   useEffect(() => {
     api
-      .get("/receitas")
+      .get("/receitasCompleta")
       .then((response) => {
-        setNome(response.data[0].nome);
-        setIdUsuario(response.data[0].id_usuario);
-        setDataNas(response.data[0].data_nasc.split("T")[0]);
-        setCelular(response.data[0].celular);
-        setEmail(response.data[0].email);
-      })
-      .catch((err) => console.error(err));
-
-    api
-      .get("/receitas")
-      .then((response) => {
-        setIdReceita(response.data[0].id_receita);
-        setNome(response.data[0].nome);
-        setRendimento(response.data[0].rendimento);
-        setSujestao(response.data[0].sujestao);
-      })
-      .catch((err) => console.error(err));
-
-    api
-      .get(`/ingredientes/${idReceita}`)
-      .then((response) => {
-        setIngrediente(response.data[0].ingrediente);
+        setReceitas(response.data);
       })
       .catch((err) => console.error(err));
   }, []);
@@ -53,51 +43,11 @@ function PaginaInicial() {
       header="Receitas da Vovó - Pagina Inicial"
       footer="© Copyright 2024-2025 Santiago Developer LTDA & BS - Brazilian Software"
     >
-      <Box title={`${nome} - Serve ${rendimento} pessoa`}>
-        <div className="headerBox">
-          <h2>
-            <strong>Ingredientes:</strong>
-          </h2>
-        </div>
-        <div className="ingredientesBox">
-          {ingrediente.map((item, index) => (
-            <p key={index}>{item.ingrediente}</p>
-          ))}
-        </div>
+      {receitasMap.map((receita, index) => (
+        <BoxReceita key={index} receita={receita} />
+      ))}
 
-        <div className="headerBox">
-          <h2>
-            <strong>Modo de Preparo:</strong>
-          </h2>
-        </div>
-        <p>
-          <InlineStep stepNumber={1} /> Frite o bacon em uma panela e reserve
-          para usar depois
-        </p>
-        <p>
-          <InlineStep stepNumber={2} /> Misture os ovos com o sal, cebolinha e
-          páprica e coloque em uma panela com manteiga
-        </p>
-        <p>
-          <InlineStep stepNumber={3} /> Coloque o bacon frito no meio do omelet
-          e deixe cozinhar
-        </p>
-        <p>
-          <InlineStep stepNumber={4} /> Após fazer esse processo, coloque a
-          mussarela e deixe derreter
-        </p>
-        <p>
-          <InlineStep stepNumber={5} /> Seu{" "}
-          <strong>Omelet Caseiro da Casa</strong> está pronto para ser servido
-          !!
-        </p>
-        <br />
-        <BoxInto title="Sujestões da Receita">
-          <p>{sujestao}</p>
-        </BoxInto>
-      </Box>
-
-      <Box title="Frango com Molho Branco - Serve 2 pessoa">
+      {/* <Box title="Frango com Molho Branco - Serve 2 pessoa">
         <p2>
           <strong>Ingredientes:</strong>
         </p2>
@@ -356,7 +306,7 @@ function PaginaInicial() {
             favor.
           </p>
         </BoxInto>
-      </Box>
+      </Box> */}
     </PageTemplate>
   );
 }

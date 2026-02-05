@@ -129,11 +129,12 @@ p{
 
 /* Box.css */
 .boxInto-container {
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   border-radius: 8px;
   background-color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   gap: 10px;
+  padding-top: 20px !important;
 }
 
 .boxInto-title {
@@ -179,7 +180,7 @@ p{
 .page-body {
   flex: 1;
   padding: 20px;
-  margin: 0px 300px ;
+  margin: 0px 5rem ;
 }
 
 .page-title {
@@ -194,7 +195,6 @@ p{
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-right: 180px;
   line-height: 1.6; /* Ajuste o valor conforme necessário */
 }
 
