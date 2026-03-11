@@ -1,16 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import '../global.css'; 
+import React from "react";
+import PropTypes from "prop-types";
+import "../global.css";
 
-const PageTemplate = ({ children, title, header, footer, className, style }) => {
+const PageTemplate = ({ children, title, header, footer, style }) => {
   return (
-    <div className={`page-template ${className}`} style={style}>
+    <div className={"page-template"} style={style}>
       {header && <header className="page-header">{header}</header>}
-      <div className="page-body"> 
+      <div className="page-body">
         {title && <h1 className="page-title">{title}</h1>}
-        <div className="page-content">
-          {children}
-        </div>
+        <div className="page-content">{children}</div>
       </div>
       {footer && <footer className="page-footer">{footer}</footer>}
     </div>
@@ -27,10 +25,10 @@ PageTemplate.propTypes = {
 };
 
 PageTemplate.defaultProps = {
-  title: '',
+  title: "",
   header: null,
   footer: null,
-  className: '',
+  className: "",
   style: {},
 };
 

@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   AppstoreOutlined,
-  ContainerOutlined,
-  DesktopOutlined,
   MailOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -17,16 +15,6 @@ export default function SidebarBoot() {
 
   const toggleCollapsed = () => {
     setCollapsed(!collapsed);
-  };
-
-  const handleMenuClick = (e) => {
-    const item = items
-      .flatMap((i) => (i.children ? i.children : i))
-      .find((i) => i.key === e.key);
-
-    if (item?.path) {
-      navigate(item.path);
-    }
   };
 
   const items = [

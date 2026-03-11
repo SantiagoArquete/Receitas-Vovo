@@ -10,8 +10,9 @@ import Sobre from "./pages/Sobre";
 import "../src/global.css";
 
 const App = () => {
-  return (
+  return (  
     <div className="layout">
+    {/* <div className="container">  */}
       <SidebarBoot />
       <div className="page-content">
         <Routes>
